@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./favicon.ico">
+
+    <title>Dashboard</title>
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="resource/config.js"></script>
+
+    <link href="css/profile.css" rel="stylesheet">
+    <script src="js/menue.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/messenger.js"></script>
+
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="board.html">Pausenverwaltung</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="board.html">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="profile.html">Profil<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="livedata.html">Live Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="help.html">Hilfe</a>
+                </li>
+            </ul>
+            <form class="form-inline mt-2 mt-md-0">
+                <button id="btnLogout" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
+            </form>
+        </div>
+    </nav>
+</header>
+    <div class="container">
+        <h1>Profil</h1>
+
+        <div class="row">
+            <div class="col-md-4 font-weight-bold">Vorname:</div>
+            <div class="col-md-8" id="profileFirstName"></div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4 font-weight-bold">Nachname:</div>
+            <div class="col-md-8" id="profileLastName"></div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4 font-weight-bold">Username:</div>
+            <div class="col-md-8" id="profileUsername"></div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4 font-weight-bold">Klasse:</div>
+            <div class="col-md-8" id="profileClassroom"></div>
+        </div>
+
+        <div class="row">&nbsp;</div>
+
+        <div id="notificationSetting" class="row">
+            <h2>Einstellen der Benachrichtigungen </h2>
+            <div class="row">
+
+                <div class="col-sm-12">
+                <label class="custom-control custom-checkbox">
+                    <input id="cbBreakChange" type="checkbox"
+                           class="custom-control-input">
+                    <span class="custom-control-indicator cbNotificationSetting"></span>
+                    <span class="custom-control-description">Benachrichtigung bei Pausen&auml;nderungen</span>
+                </label>
+                </div>
+
+                <div class="col-sm-12">
+                <label class="custom-control custom-checkbox">
+                    <input id="cbJoinStand" type="checkbox"
+                           class="custom-control-input cbNotificationSetting">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description"> Benachrichtigung beim Hinzuf&uuml;gen eines Standes</span>
+                </label>
+                </div>
+
+                <div class="col-sm-12">
+                <label class="custom-control custom-checkbox">
+                    <input id="cbLeaveStand" type="checkbox"
+                           class="custom-control-input cbNotificationSetting">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Benachrichtigung beim Entfernen eines Standes</span>
+                </label>
+                </div>
+
+                <div class="col-sm-12">
+                <label class="custom-control custom-checkbox">
+                    <input id="cbDeleteStand" type="checkbox"
+                           class="custom-control-input cbNotificationSetting">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Benachrichtigung beim L&ouml;schen eines Standes</span>
+                </label>
+                </div>
+
+                <div class="col-sm-12">
+                <label class="custom-control custom-checkbox">
+                    <input id="cbChangeStandSetting" type="checkbox"
+                           class="custom-control-input cbNotificationSetting">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Benachrichtigung bei &Auml;nderung der Standeinstellungen</span>
+                </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">&nbsp;</div>
+
+        <div class="row" id="sendMsgArey">
+            <button id="sendMsg" class="btn btn-primary btn-small">Sende mir eine Nachricht</button>
+        </div>
+
+        <div class="row">&nbsp;</div>
+
+        <h2>St&auml;nde</h2>
+        <div class="row" id="profileStandArea">
+        </div>
+
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+.draggable {
+    width: 25px;
+    height: 25px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    border-color: black;
+    border-style: dotted;
+    border-width: thin;
+
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+
+    font:13px Arial;
+    cursor:move;
+    padding: 10px;
+
+    background-color: red;
+}
+
+.red{
+    background-color: green;
+    color: white;
+}
+
+#standInfo{
+    height: 170px;)
+}
+
+#dragArea{
+    background-image: url("plan.png");
+    background-repeat: no-repeat;
+
+    height: 650px;
+     background-size: contain;
+
+}

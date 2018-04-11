@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./favicon.ico">
+
+    <title>Stand</title>
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+            integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+            crossorigin="anonymous"></script>
+    <script src="resource/config.js"></script>
+
+    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/clock.css" rel="stylesheet">
+
+    <script src="js/menue.js"></script>
+    <script src="js/standinfo.js"></script>
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="board.html">Pausenverwaltung</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="board.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.html">Profil</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="livedata.html">Live Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="help.html">Hilfe</a>
+                </li>
+            </ul>
+            <form class="form-inline mt-2 mt-md-0">
+                <button id="btnLogout" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
+            </form>
+        </div>
+    </nav>
+</header>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="board.html">Overview <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="stand.html">St&auml;nde</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="student.html">Sch&uuml;ler</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="teacher.html">Lehrer</a>
+                </li>
+            </ul>
+        </nav>
+        <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+            <h1 id="headingStand">Stand</h1>
+            <section class="row text-center placeholders">
+                <div class="col-md-4">
+                    <div class="list-group" id="standOptionList" role="tablist">
+                        <a class="list-group-item list-group-item-action active" data-toggle="list"
+                           href="#standDescriptionTab" role="tab">Informationen</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#standBreakTab"
+                           role="tab">Pausenverwaltung</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#standTeacherTab"
+                           role="tab">Lehrer</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#standStudentTab"
+                           role="tab">Sch&uuml;ler</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" id="btnStandSettingTab"
+                           href="#standSettingTab" role="tab">Einstellungen</a>
+
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="standDescriptionTab" role="tabpanel"></div>
+
+                        <div class="tab-pane" id="standTeacherTab" role="tabpanel">
+                            <button id="btnFindNewTeacher" class="btn btn-primary btn-lg btn-block" data-toggle="modal"
+                                    data-target="#findNewTeacherModal">F&uuml;ge einen Lehrer hinzu
+                            </button>
+                            <div class="list-group" id="standTeacherList"></div>
+                        </div>
+
+                        <div class="tab-pane" id="standStudentTab" role="tabpanel">
+                            <button id="btnFindNewStudent" class="btn btn-primary btn-lg btn-block" data-toggle="modal"
+                                    data-target="#findNewStudentModal">F&uuml;ge einen Sch&uuml;ler hinzu
+                            </button>
+                            <div class="list-group" id="standStudentList"></div>
+                        </div>
+
+                        <div class="tab-pane" id="standBreakTab" role="tabpanel">
+                            <div id="standBreakAlerts">
+                                <div id="errorBreak" class="alert alert-warning alert-dismissible fade"
+                                     role="alert"></div>
+                            </div>
+
+                            <table class="table table-responsive">
+                                <thead id="theadBreaks"></thead>
+                                <tbody id="tbodyBreaks"></tbody>
+                            </table>
+
+                            <div class="col-sm-4" id="breakAgenda">
+                                <h4>Legende</h4>
+                                <ul class="list-group">
+                                    <button type="button" class="btn btn-primary">Pause</button>
+                                    <button type="button" class="btn btn-success">Guide</button>
+                                    <button type="button" class="btn btn-secondary">Anderer Stand</button>
+                                    <button type="button" class="btn btn-dark">Krank</button>
+                                    <button type="button" class="btn btn-info">Sonstiges</button>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="standSettingTab" role="tabpanel">
+                            <div class="col-sm-12">
+                                <h4>Stand-Titel</h4>
+                            </div>
+                            <div class="col-sm-12">
+                               <input type="text" class="form-control" id="tfStandTitle">
+                            </div>
+                            <div class="col-sm-12">
+                                <h4>Stand-Beschreibung</h4>
+                            </div>
+                            <div class="col-sm-12">
+                                <textarea class="form-control" id="taStandDescription" rows="4"></textarea>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <h4>Letzte &Auml;nderungsm&ouml;glichkeit</h4>
+                            </div>
+                            <div class="col-sm-12">
+                                <input id="deadlineDate" placeholder="01.02.2018" class="form-control">
+                            </div>
+                            <hr>
+                            <div class="col-sm-12">
+                                <h4>Mindestbesetzung</h4>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="descTime0910">09:00 - 10:00</span>
+                                    <input type="text" class="form-control" id="time0910"
+                                           aria-describedby="descTime0910">
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="descTime1011">10:00 - 11:00</span>
+                                    <input type="text" class="form-control" id="time1011"
+                                           aria-describedby="descTime1011">
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="descTime1112">11:00 - 12:00</span>
+                                    <input type="text" class="form-control" id="time1112"
+                                           aria-describedby="descTime1112">
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="descTime1213">12:00 - 13:00</span>
+                                    <input type="text" class="form-control" id="time1213"
+                                           aria-describedby="descTime1213">
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="descTime1314">13:00 - 14:00</span>
+                                    <input type="text" class="form-control" id="time1314"
+                                           aria-describedby="descTime1314">
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="descTime1415">14:00 - 15:00</span>
+                                    <input type="text" class="form-control" id="time1415"
+                                           aria-describedby="descTime1415">
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="descTime1516">15:00 - 16:00</span>
+                                    <input type="text" class="form-control" id="time1516"
+                                           aria-describedby="descTime1516">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="col-sm-12">
+                                <h4>Sch&uuml;lerrechte</h4>
+                                <form>
+                                    <div class="form-group text-left">
+                                        <label class="custom-control custom-checkbox">
+                                            <input id="cbAllowStudentsBreak" type="checkbox"
+                                                   class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">Sch&uuml;ler d&uuml;fen ihre Pausen selbst eintragen</span>
+                                        </label>
+                                        <label class="custom-control custom-checkbox">
+                                            <input id="cbAllowStudentsJoin" type="checkbox"
+                                                   class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">Sch&uuml;ler d&uuml;fen den Stand beitreten</span>
+                                        </label>
+                                        <label class="custom-control custom-checkbox">
+                                            <input id="cbAllowStudentsLeave" type="checkbox"
+                                                   class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">Sch&uuml;ler d&uuml;fen den Stand verlassen</span>
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-sm-12">
+                                <h4>Pauseneinteilung</h4>
+                                <div class="col-lg-12">
+                                    <div class="form-check form-group text-left">
+
+                                        <label class="custom-control custom-checkbox">
+                                            <input id="cbBreackOverrride" type="checkbox"
+                                                   class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">&Uuml;berschreiben der existenten Pausen</span>
+                                        </label>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <button class="btn btn-block btn-danger" id="btnAutoBreak">Pausen automatisch einteilen</button>
+                                </div>
+                            </div>
+
+                            <div id="standSettingSaveDiv" class="col-sm-12">
+                                <button id="btnSaveSettings" onclick="saveStand()"
+                                        class="btn btn-block btn-info invisible">Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</div>
+
+
+<!-- find a student Modal -->
+<div class="modal fade" id="findNewStudentModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Student</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container" id="filterContainer"></div>
+            </div>
+            <div id="filterContainerFood" class="modal-footer">
+                <button id="btnModalFilterCancel" type="button" class="btn btn-secondary" data-dismiss="modal">
+                    Abbrechen
+                </button>
+                <button id="btnModalFilter" type="button" class="btn btn-primary">Suchen</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- find a teacher Modal -->
+<div class="modal fade" id="findNewTeacherModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Lehrer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container" id="filterContainerTeacher"></div>
+            </div>
+            <div id="filterContainerFoodStudent" class="modal-footer">
+                <button id="btnModalFilterCancelTeacher" type="button" class="btn btn-secondary" data-dismiss="modal">
+                    Abbrechen
+                </button>
+                <button id="btnModalFilterTeacher" type="button" class="btn btn-primary">Suchen</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

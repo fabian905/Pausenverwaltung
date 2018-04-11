@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./favicon.ico">
+
+    <title>St&auml;nde</title>
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="resource/config.js"></script>
+
+    <link href="css/dashboard.css" rel="stylesheet">
+
+    <script src="js/menue.js"></script>
+    <script src="js/stand.js"></script>
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="board.html">Pausenverwaltung</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="board.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.html">Profil</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="livedata.html">Live Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="help.html">Hilfe</a>
+                </li>
+            </ul>
+            <form class="form-inline mt-2 mt-md-0">
+                <button id="btnLogout" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
+            </form>
+        </div>
+    </nav>
+</header>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="board.html">Overview</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="stand.html">St&auml;nde<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="student.html">Sch&uuml;ler</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="teacher.html">Lehrer</a>
+                </li>
+
+            </ul>
+        </nav>
+        <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+            <h1>St&auml;nde</h1>
+
+            <section class="row text-center placeholders">
+                <div class="offset-md-1 col-md-6">
+                    <button id="createStandBtn" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#createNewStandModal">Erstelle einen neuen Stand</button>
+                </div>
+            </section>
+
+            <section class="row text-center placeholders">
+                <div class="offset-md-1 col-md-6">
+                    <div id="standlist" class="list-group"></div>
+               </div>
+            </section>
+        </main>
+    </div>
+</div>
+
+
+<!-- Create a new Stand -->
+<div class="modal fade" id="createNewStandModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Erstelle einen neuen Stand</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-sm-12">
+                    <label>Name:</label>
+                </div>
+                <div class="col-sm-12">
+                  <input id="newStandName" class="form-control" type="text" placeholder="Name">
+                </div>
+                <div class="col-sm-12">
+                    <label>Beschreibung:</label>
+                </div>
+                <div class="col-sm-12">
+                    <textarea id="newStandDescription" placeholder="Beschreibung" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                <button id="newStandCreateBtn" type="button" data-dismiss="modal" class="btn btn-primary">Erstellen</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
